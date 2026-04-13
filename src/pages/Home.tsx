@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import EssentialHoodie from "/images/essential-hoodie-sage.png";
@@ -6,6 +6,8 @@ import EssentialHoodie from "/images/essential-hoodie-sage.png";
 export default function Home() {
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [loaded, setLoaded] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const dropDate = new Date("2026-04-20T00:00:00");
@@ -25,50 +27,112 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className={`min-h-screen transition-opacity duration-1000 ${loaded ? "opacity-100" : "opacity-0"}`}>
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-[#FAFAF8] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FAFAF8] via-[#F5F4ED] to-[#E8E6DC] opacity-50" />
+    <div className={`transition-opacity duration-1000 ${loaded ? "opacity-100" : "opacity-0"}`}>
+      {/* Hero Section - Cinematic "The Walk" */}
+      <section ref={heroRef} className="relative min-h-screen overflow-hidden">
+        {/* Dark Cinematic Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A] via-[#2A2A2D] to-[#141413]" />
         
-        {/* Floating decorative elements */}
-        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-[#8B9A7D] opacity-20 animate-[float_6s_ease-in-out_infinite]" />
-        <div className="absolute top-40 right-20 w-24 h-24 rounded-full bg-[#C96442] opacity-15 animate-[float_8s_ease-in-out_infinite_1s]" />
-        <div className="absolute bottom-32 left-1/4 w-20 h-20 rounded-full bg-[#8B9A7D] opacity-10 animate-[float_7s_ease-in-out_infinite_2s]" />
+        {/* Animated Fog Layers */}
+        <div className="absolute inset-0 fog-1" />
+        <div className="absolute inset-0 fog-2" />
+        <div className="absolute inset-0 fog-3" />
         
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold text-[#141413] tracking-tight mb-6 animate-[slideUp_0.8s_ease-out]">
-            Born in the Streets,
-            <br />
-            <span className="text-[#8B9A7D]">Built for the Future</span>
+        {/* Particle Field */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white/20 rounded-full particle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${i * 0.5}s`,
+                animationDuration: `${8 + Math.random() * 4}s`,
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Walking Figure Silhouette */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        >
+          <div className="relative">
+            <div className="figure-walk">
+              <div className="figure-head" />
+              <div className="figure-body" />
+              <div className="figure-leg-left" />
+              <div className="figure-leg-right" />
+              <div className="figure-arm-left" />
+              <div className="figure-arm-right" />
+            </div>
+            <div className="fabric-flow" />
+            <div className="fabric-flow-delayed" />
+          </div>
+        </div>
+        
+        {/* Hero Content with Parallax */}
+        <div 
+          className="relative z-10 min-h-screen flex flex-col items-center justify-center text-center px-6"
+          style={{ transform: `translateY(${scrollY * 0.5}px)`, opacity: 1 - scrollY * 0.002 }}
+        >
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold text-white tracking-tight mb-6 animate-[fadeSlideUp_1.2s_ease-out]">
+            <span className="block text-white/90">Born in the Streets,</span>
+            <span className="block text-[#8B9A7D]">Built for the Future</span>
           </h1>
-          <p className="text-lg md:text-xl text-[#5E5D59] max-w-2xl mx-auto mb-10 animate-[slideUp_0.8s_ease-out_0.2s]">
+          
+          <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-10 animate-[fadeSlideUp_1.2s_ease-out_0.2s]">
             Luxury streetwear at the intersection of architectural design and radical environmental responsibility.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[slideUp_0.8s_ease-out_0.4s]">
-            <button className="group px-8 py-4 bg-[#1A1A1A] text-white rounded-full text-lg font-medium hover:bg-[#2A2A2A] transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_40px_rgba(139,154,125,0.3)] active:scale-95">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[fadeSlideUp_1.2s_ease-out_0.4s]">
+            <button className="group px-8 py-4 bg-white text-[#1A1A1A] rounded-full text-lg font-medium hover:bg-[#8B9A7D] hover:text-white transition-all duration-500 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl hover:shadow-[#8B9A7D]/30">
               Explore Collection
               <span className="ml-2 inline-block group-hover:translate-x-2 transition-transform duration-300">→</span>
             </button>
-            <button className="group px-8 py-4 bg-[#8B9A7D] text-white rounded-full text-lg font-medium hover:bg-[#7A8A6C] transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_40px_rgba(139,154,125,0.4)] active:scale-95">
+            <button className="group px-8 py-4 bg-transparent border-2 border-white/30 text-white rounded-full text-lg font-medium hover:bg-white/10 transition-all duration-300 hover:scale-105 active:scale-95">
               Our Story
               <span className="ml-2 inline-block group-hover:translate-x-2 transition-transform duration-300">→</span>
             </button>
           </div>
-        </div>
-        
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-[bounce_2s_ease-in-out_infinite]">
-          <div className="w-6 h-10 rounded-full border-2 border-[#5E5D59] flex items-start justify-center p-2">
-            <div className="w-1.5 h-3 bg-[#8B9A7D] rounded-full animate-[scrollDot_2s_ease-in-out_infinite]" />
+          
+          {/* "Wear the silence." Overlay */}
+          <div className="absolute bottom-32 left-0 right-0 text-center animate-[fadeIn_2s_ease-out_1.5s] opacity-0">
+            <p className="text-2xl md:text-3xl text-white/40 font-light tracking-[0.3em] uppercase italic">
+              "Wear the silence."
+            </p>
           </div>
         </div>
+        
+        {/* Scroll Indicator */}
+        <div 
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 z-20"
+          style={{ opacity: 1 - scrollY * 0.005 }}
+        >
+          <div className="relative">
+            <div className="w-px h-32 bg-gradient-to-b from-white/50 to-transparent" />
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-3 h-3 border border-white/30 rounded-full animate-[scrollPulse_2s_ease-in-out_infinite]" />
+          </div>
+        </div>
+        
+        {/* Transition Gradient into Countdown */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-[#1A1A1A] z-10" />
       </section>
 
-      {/* Countdown Section */}
-      <section className="py-24 bg-[#1A1A1A] text-white">
-        <div className="max-w-6xl mx-auto px-6 text-center">
+      {/* Countdown Section - Flows from Hero */}
+      <section className="relative -mt-1 bg-[#1A1A1A] text-white overflow-hidden">
+        <div className="absolute inset-0 fog-fade" />
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 text-center">
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">New Drop Coming Soon</h2>
           <p className="text-[#B0AEA5] mb-12">The next chapter of sustainable streetwear</p>
           
@@ -217,6 +281,18 @@ export default function Home() {
         @keyframes pulse {
           0%, 100% { transform: scale(1); }
           50% { transform: scale(1.05); }
+        }
+        @keyframes fadeSlideUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes scrollPulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.2); }
         }
       `}</style>
     </div>

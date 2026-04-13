@@ -35,50 +35,25 @@ export default function Home() {
 
   return (
     <div className={`transition-opacity duration-1000 ${loaded ? "opacity-100" : "opacity-0"}`}>
-      {/* Hero Section - Cinematic "The Walk" */}
+      {/* Hero Section - Cinematic "The Walk" with Video */}
       <section ref={heroRef} className="relative min-h-screen overflow-hidden">
-        {/* Dark Cinematic Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A] via-[#2A2A2D] to-[#141413]" />
-        
-        {/* Animated Fog Layers */}
-        <div className="absolute inset-0 fog-1" />
-        <div className="absolute inset-0 fog-2" />
-        <div className="absolute inset-0 fog-3" />
-        
-        {/* Particle Field */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-white/20 rounded-full particle"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${i * 0.5}s`,
-                animationDuration: `${8 + Math.random() * 4}s`,
-              }}
-            />
-          ))}
-        </div>
-        
-        {/* Walking Figure Silhouette */}
-        <div 
-          className="absolute inset-0 flex items-center justify-center"
-          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ transform: `translateY(${scrollY * 0.2}px)` }}
         >
-          <div className="relative">
-            <div className="figure-walk">
-              <div className="figure-head" />
-              <div className="figure-body" />
-              <div className="figure-leg-left" />
-              <div className="figure-leg-right" />
-              <div className="figure-arm-left" />
-              <div className="figure-arm-right" />
-            </div>
-            <div className="fabric-flow" />
-            <div className="fabric-flow-delayed" />
-          </div>
-        </div>
+          <source src="/videos/hero-fashion.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Dark Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+        
+        {/* Subtle Fog Overlay for Depth */}
+        <div className="absolute inset-0 fog-1 opacity-30" />
         
         {/* Hero Content with Parallax */}
         <div 
@@ -90,7 +65,7 @@ export default function Home() {
             <span className="block text-[#8B9A7D]">Built for the Future</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-10 animate-[fadeSlideUp_1.2s_ease-out_0.2s]">
+          <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 animate-[fadeSlideUp_1.2s_ease-out_0.2s]">
             Luxury streetwear at the intersection of architectural design and radical environmental responsibility.
           </p>
           
@@ -105,7 +80,7 @@ export default function Home() {
             </button>
           </div>
           
-          {/* "Wear the silence." Overlay */}
+          {/* Overlay Text */}
           <div className="absolute bottom-32 left-0 right-0 text-center animate-[fadeIn_2s_ease-out_1.5s] opacity-0">
             <p className="text-2xl md:text-3xl text-white/40 font-light tracking-[0.3em] uppercase italic">
               "Wear the silence."

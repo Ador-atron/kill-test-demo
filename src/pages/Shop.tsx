@@ -1,13 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import EssentialHoodie from "/images/essential-hoodie-sage.png";
+import UrbanJoggers from "/images/urban-joggers-charcoal.png";
+import SignatureHoodie from "/images/signature-hoodie-black.png";
+import ClassicJoggers from "/images/classic-joggers-stone.png";
+import LimitedHoodie from "/images/limited-hoodie-terracotta.png";
+import TechJoggers from "/images/tech-joggers-sage.png";
+
 const products = [
-  { id: 1, name: "Essential Hoodie", category: "hoodies", price: 185, color: "Sage", description: "400gsm Heavyweight Organic Cotton" },
-  { id: 2, name: "Urban Joggers", category: "joggers", price: 145, color: "Charcoal", description: "Premium blend with hidden bungee" },
-  { id: 3, name: "Signature Hoodie", category: "hoodies", price: 195, color: "Black", description: "Garment-dyed finish, triple-stitched" },
-  { id: 4, name: "Classic Joggers", category: "joggers", price: 135, color: "Stone", description: "Tapered ankle with articulated knees" },
-  { id: 5, name: "Limited Hoodie", category: "hoodies", price: 225, color: "Terracotta", description: "Limited edition colorway" },
-  { id: 6, name: "Tech Joggers", category: "joggers", price: 165, color: "Sage", description: "Technical pockets with water-resistant zippers" },
+  { id: 1, name: "Essential Hoodie", category: "hoodies", price: 185, color: "Sage", description: "400gsm Heavyweight Organic Cotton", img: EssentialHoodie },
+  { id: 2, name: "Urban Joggers", category: "joggers", price: 145, color: "Charcoal", description: "Premium blend with hidden bungee", img: UrbanJoggers },
+  { id: 3, name: "Signature Hoodie", category: "hoodies", price: 195, color: "Black", description: "Garment-dyed finish, triple-stitched", img: SignatureHoodie },
+  { id: 4, name: "Classic Joggers", category: "joggers", price: 135, color: "Stone", description: "Tapered ankle with articulated knees", img: ClassicJoggers },
+  { id: 5, name: "Limited Hoodie", category: "hoodies", price: 225, color: "Terracotta", description: "Limited edition colorway", img: LimitedHoodie },
+  { id: 6, name: "Tech Joggers", category: "joggers", price: 165, color: "Sage", description: "Technical pockets with water-resistant zippers", img: TechJoggers },
 ];
 
 export default function Shop() {
@@ -65,10 +72,12 @@ export default function Shop() {
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
                 <div className="aspect-square bg-[#E8E6DC] relative overflow-hidden">
+                  <img 
+                    src={product.img} 
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                   <div className={`absolute inset-0 bg-gradient-to-br from-[#8B9A7D] to-[#C96442] opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-8xl text-[#8B9A7D] group-hover:scale-110 transition-transform duration-500">⟐</span>
-                  </div>
                   <div className="absolute top-4 right-4 px-3 py-1 bg-[#1A1A1A] text-white text-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     Quick View
                   </div>

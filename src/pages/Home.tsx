@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import EssentialHoodie from "/images/essential-hoodie-sage.png";
+
 export default function Home() {
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [loaded, setLoaded] = useState(false);
@@ -101,7 +103,7 @@ export default function Home() {
               <div className="aspect-square bg-[#E8E6DC] rounded-3xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#8B9A7D] to-[#C96442] opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-6xl">⟐</span>
+                  <img src={EssentialHoodie} alt="The Essential Hoodie" className="w-3/4 h-auto object-contain" />
                 </div>
               </div>
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#8B9A7D] rounded-full opacity-80 animate-[float_4s_ease-in-out_infinite]" />

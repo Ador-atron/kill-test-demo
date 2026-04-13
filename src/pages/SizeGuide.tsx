@@ -26,24 +26,24 @@ export default function SizeGuide() {
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
       {/* Hero */}
-      <section className="pt-32 pb-16 px-6">
+      <section className="pt-24 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#141413] tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold text-[#141413] tracking-tight mb-3 sm:mb-4">
             Size Guide
           </h1>
-          <p className="text-xl text-[#5E5D59]">Find your perfect fit</p>
+          <p className="text-base sm:text-xl text-[#5E5D59]">Find your perfect fit</p>
         </div>
       </section>
 
       {/* Product Selector */}
-      <section className="pb-12 px-6">
+      <section className="pb-8 sm:pb-12 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             {products.map((product) => (
               <button
                 key={product.id}
                 onClick={() => setSelectedProduct(product.id)}
-                className={`px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:scale-105 active:scale-95 ${
+                className={`px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-medium transition-all duration-300 hover:scale-105 active:scale-95 ${
                   selectedProduct === product.id
                     ? "bg-[#1A1A1A] text-white shadow-lg"
                     : "bg-[#E8E6DC] text-[#5E5D59] hover:bg-[#D8D6CC]"
@@ -57,16 +57,16 @@ export default function SizeGuide() {
       </section>
 
       {/* Interactive Size Selector */}
-      <section className="pb-16 px-6">
+      <section className="pb-12 sm:pb-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm">
-            <h2 className="text-2xl font-semibold text-center mb-8">Select Your Size</h2>
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 md:p-12 shadow-sm">
+            <h2 className="text-xl sm:text-2xl font-semibold text-center mb-6 sm:mb-8">Select Your Size</h2>
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
               {sizes.map((size) => (
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
-                  className={`w-16 h-16 rounded-2xl text-lg font-semibold transition-all duration-300 hover:scale-110 active:scale-95 ${
+                  className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl text-base sm:text-lg font-semibold transition-all duration-300 hover:scale-110 active:scale-95 ${
                     selectedSize === size
                       ? "bg-[#8B9A7D] text-white shadow-lg scale-110"
                       : "bg-[#E8E6DC] text-[#5E5D59] hover:bg-[#D8D6CC]"
@@ -132,10 +132,10 @@ export default function SizeGuide() {
       </section>
 
       {/* Fit Guide */}
-      <section className="pb-16 px-6">
+      <section className="pb-12 sm:pb-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-semibold text-center mb-8">Fit Guide</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <h2 className="text-xl sm:text-2xl font-semibold text-center mb-6 sm:mb-8">Fit Guide</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
             {fitGuide.map((fit, i) => (
               <div key={i} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:scale-105 group">
                 <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">{fit.icon}</div>
@@ -148,10 +148,10 @@ export default function SizeGuide() {
       </section>
 
       {/* Technical Details */}
-      <section className="py-24 bg-[#1A1A1A] text-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold text-center mb-12">Technical Breakdown</h2>
-          <div className="space-y-6">
+      <section className="py-16 sm:py-24 bg-[#1A1A1A] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-8 sm:mb-12">Technical Breakdown</h2>
+          <div className="space-y-4 sm:space-y-6">
             {[
               { title: "Signature Motif", desc: "Includes tonal embroidery—a repeating icon that establishes our unique aesthetic voice." },
               { title: "The Foundation", desc: "Crafted from 400gsm Heavyweight Organic Cotton for a structured silhouette that holds its shape wash after wash." },
@@ -164,8 +164,8 @@ export default function SizeGuide() {
                   <span className="text-white font-bold">{i + 1}</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-1">{detail.title}</h3>
-                  <p className="text-[#B0AEA5]">{detail.desc}</p>
+                  <h3 className="font-semibold text-base sm:text-lg mb-1">{detail.title}</h3>
+                  <p className="text-[#B0AEA5] text-sm sm:text-base">{detail.desc}</p>
                 </div>
               </div>
             ))}
@@ -174,10 +174,10 @@ export default function SizeGuide() {
       </section>
 
       {/* Care Instructions */}
-      <section className="py-24 px-6">
+      <section className="py-16 sm:py-24 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-semibold text-center mb-12">Care Instructions</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-8 sm:mb-12">Care Instructions</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
             {[
               { icon: "⟼", title: "Wash Cold", desc: "Use cold water to preserve fabric integrity and color" },
               { icon: "⊘", title: "Air Dry", desc: "Lay flat or hang dry for best results" },

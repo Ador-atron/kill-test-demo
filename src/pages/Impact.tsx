@@ -42,12 +42,12 @@ export default function Impact() {
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
       {/* Hero */}
-      <section className="pt-32 pb-24 px-6 bg-[#1A1A1A] text-white">
+      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 bg-[#1A1A1A] text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight mb-6 animate-[slideUp_0.8s_ease-out]">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-4 sm:mb-6 animate-[slideUp_0.8s_ease-out]">
             Our Impact
           </h1>
-          <p className="text-xl md:text-2xl text-[#B0AEA5] leading-relaxed animate-[slideUp_0.8s_ease-out_0.2s]">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#B0AEA5] leading-relaxed animate-[slideUp_0.8s_ease-out_0.2s]">
             We aren't just selling clothes; we're inviting you to join a movement toward "slow streetwear."
           </p>
         </div>
@@ -85,7 +85,7 @@ export default function Impact() {
       <section id="metrics" className="py-24 bg-[#8B9A7D]">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-semibold text-center text-white mb-16">The Numbers</h2>
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {metrics.map((metric, i) => (
               <div key={i} className="text-center group">
                 <div className="text-5xl md:text-6xl font-semibold text-white mb-2 group-hover:scale-110 transition-transform duration-500">

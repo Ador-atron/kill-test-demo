@@ -60,12 +60,12 @@ export default function Home() {
           className="relative z-10 min-h-screen flex flex-col items-center justify-center text-center px-6"
           style={{ transform: `translateY(${scrollY * 0.5}px)`, opacity: 1 - scrollY * 0.002 }}
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold text-white tracking-tight mb-6 animate-[fadeSlideUp_1.2s_ease-out]">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-semibold text-white tracking-tight mb-6 animate-[fadeSlideUp_1.2s_ease-out]">
             <span className="block text-white/90">Born in the Streets,</span>
             <span className="block text-[#8B9A7D]">Built for the Future</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 animate-[fadeSlideUp_1.2s_ease-out_0.2s]">
+          <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 animate-[fadeSlideUp_1.2s_ease-out_0.2s]">
             Luxury streetwear at the intersection of architectural design and radical environmental responsibility.
           </p>
           
@@ -111,7 +111,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">New Drop Coming Soon</h2>
           <p className="text-[#B0AEA5] mb-12">The next chapter of sustainable streetwear</p>
           
-          <div className="flex justify-center gap-4 md:gap-8">
+          <div className="flex justify-center gap-3 sm:gap-4 md:gap-8">
             {[
               { value: countdown.days, label: "Days" },
               { value: countdown.hours, label: "Hours" },
@@ -119,10 +119,10 @@ export default function Home() {
               { value: countdown.seconds, label: "Seconds" },
             ].map((item, i) => (
               <div key={item.label} className="flex flex-col items-center">
-                <div className="w-20 md:w-28 h-20 md:h-28 bg-[#2A2A2D] rounded-2xl flex items-center justify-center text-3xl md:text-5xl font-semibold mb-3 animate-[pulse_2s_ease-in-out_infinite]" style={{ animationDelay: `${i * 0.1}s` }}>
+                <div className="w-16 sm:w-20 md:w-28 h-16 sm:h-20 md:h-28 bg-[#2A2A2D] rounded-xl sm:rounded-2xl flex items-center justify-center text-2xl sm:text-3xl md:text-5xl font-semibold mb-2 sm:mb-3 animate-[pulse_2s_ease-in-out_infinite]" style={{ animationDelay: `${i * 0.1}s` }}>
                   {String(item.value).padStart(2, "0")}
                 </div>
-                <span className="text-sm text-[#B0AEA5] uppercase tracking-wider">{item.label}</span>
+                <span className="text-xs sm:text-sm text-[#B0AEA5] uppercase tracking-wider">{item.label}</span>
               </div>
             ))}
           </div>

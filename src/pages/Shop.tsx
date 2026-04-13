@@ -29,24 +29,24 @@ export default function Shop() {
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
       {/* Hero */}
-      <section className="pt-32 pb-16 px-6">
+      <section className="pt-24 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#141413] tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold text-[#141413] tracking-tight mb-3 sm:mb-4">
             Shop
           </h1>
-          <p className="text-xl text-[#5E5D59]">Minimalist essentials built to last</p>
+          <p className="text-base sm:text-xl text-[#5E5D59]">Minimalist essentials built to last</p>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="pb-12 px-6">
+      <section className="pb-8 sm:pb-12 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-3 rounded-full text-lg font-medium transition-all duration-300 hover:scale-105 active:scale-95 ${
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-lg font-medium transition-all duration-300 hover:scale-105 active:scale-95 touch-manipulation ${
                   activeCategory === cat
                     ? "bg-[#1A1A1A] text-white shadow-lg"
                     : "bg-[#E8E6DC] text-[#5E5D59] hover:bg-[#D8D6CC]"
@@ -60,9 +60,9 @@ export default function Shop() {
       </section>
 
       {/* Product Grid */}
-      <section className="pb-24 px-6">
+      <section className="pb-16 sm:pb-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {filteredProducts.map((product, i) => (
               <div
                 key={product.id}
@@ -91,9 +91,9 @@ export default function Shop() {
                     </div>
                   )}
                 </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-semibold text-[#141413]">{product.name}</h3>
+                <div className="p-4 sm:p-6">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
+                    <h3 className="text-lg sm:text-xl font-semibold text-[#141413]">{product.name}</h3>
                     <span className="text-lg font-medium text-[#8B9A7D]">${product.price}</span>
                   </div>
                   <p className="text-[#5E5D59] text-sm mb-2">{product.description}</p>
@@ -107,9 +107,9 @@ export default function Shop() {
       </section>
 
       {/* Features */}
-      <section className="py-24 bg-[#1A1A1A] text-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-12 text-center">
+      <section className="py-16 sm:py-24 bg-[#1A1A1A] text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 text-center">
             {[
               { icon: "⟳", title: "Free Shipping", desc: "On all orders over $100" },
               { icon: "♻", title: "Sustainable", desc: "100% organic materials" },

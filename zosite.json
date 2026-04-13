@@ -1,0 +1,15 @@
+{
+  "name": "gen-flow",
+  "local_port": 52497,
+  "entrypoint": "bun run dev",
+  "publish": {
+    "label": "gen-flow",
+    "type": "http",
+    "entrypoint": "bun run prod",
+    "published_port": 54492,
+    "env": {
+      "NODE_ENV": "production",
+      "ZO_CLIENT_IDENTITY_TOKEN": "none"
+    }
+  }
+}
